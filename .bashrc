@@ -1,4 +1,4 @@
-# Add the user's local bin directory to the PATH environment variable, 
+# Add the user's local bin directory to the PATH environment variable,
 # ensuring that executables in ~/.local/bin are prioritized.
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -27,4 +27,6 @@ eval "$(pyenv virtualenv-init -)"
 export LDFLAGS="-L/usr/lib/x86_64-linux-gnu/"
 export CPPFLAGS="-I/usr/include/"
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
+export PYTHONDONTWRITEBYTECODE=1
+
 

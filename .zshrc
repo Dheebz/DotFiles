@@ -51,3 +51,5 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
 
 zstyle ':completion:*' menu select
+
+export PYTHONDONTWRITEBYTECODE=1

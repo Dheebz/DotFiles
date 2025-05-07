@@ -14,12 +14,12 @@ M.debug = true
 
 -- Optional: helper to flip flags at runtime
 function M.set(opts)
-	if opts.silent_run ~= nil then
-		M.silent_run = opts.silent_run
-	end
-	if opts.debug ~= nil then
-		M.debug = opts.debug
-	end
+  if opts.silent_run ~= nil then
+    M.silent_run = opts.silent_run
+  end
+  if opts.debug ~= nil then
+    M.debug = opts.debug
+  end
 end
 
 return M

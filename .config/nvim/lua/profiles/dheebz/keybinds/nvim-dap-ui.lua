@@ -4,23 +4,29 @@
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 return function()
-	local map = vim.keymap.set
-	local dapui = require("dapui")
+  local map = vim.keymap.set
+  local dapui = require("dapui")
 
-	-- 🔥 Toggle the DAP-UI Sidebar
-	map("n", "<leader>du", function()
-		dapui.toggle()
-	end, { desc = "Toggle DAP-UI" })
+  -- 🔥 Toggle the DAP-UI Sidebar
+  map("n", "<leader>du", function()
+    dapui.toggle()
+  end, { desc = "Toggle DAP-UI" })
 
-	-- 🧠 Open DAP-UI explicitly
-	map("n", "<leader>do", function()
-		dapui.open()
-	end, { desc = "Open DAP-UI" })
+  -- 🧠 Open DAP-UI explicitly
+  map("n", "<leader>do", function()
+    dapui.open()
+  end, { desc = "Open DAP-UI" })
 
-	-- 🛑 Close DAP-UI explicitly
-	map("n", "<leader>dc", function()
-		dapui.close()
-	end, { desc = "Close DAP-UI" })
+  -- 🛑 Close DAP-UI explicitly
+  map("n", "<leader>dc", function()
+    dapui.close()
+  end, { desc = "Close DAP-UI" })
+
+  -- Start Session
+  map("n", "<leader>ds", function()
+    dapui.setup()
+    dapui.open()
+  end, { desc = "Start DAP-UI Session" })
 end
 
 -- End of File: ~/.config/nvim/lua/profiles/dheebz/keybinds/nvim-dap-ui.lua
