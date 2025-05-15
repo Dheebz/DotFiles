@@ -4,28 +4,34 @@
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 local ls = require("luasnip")
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+
+-- Helper to get relative file path
+local function relpath(_, _)
+  return vim.fn.expand("%:~:.")
+end
 
 ls.add_snippets("python", {
-  ls.parser.parse_snippet(
-    "pyheader",
-    [[
-#!/usr/bin/env python3
-# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-# ┃  ${1:Description}                                                     ┃
-# ┃  File: ${2:src/path/to}/${3:filename}.py                              ┃
-# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+  s("pyheader", {
+    t({ "#!/usr/bin/env python3", "" }),
+    t({ "# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓" }),
+    t({ "# ┃  " }),
+    i(1, "Description"),
+    t({ "                                                     ┃" }),
+    t({ "# ┃  File: " }),
+    f(relpath, {}, {}),
+    t({ "  ┃" }),
+    t({ "# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛", "", "" }),
+    i(0),
+  }),
 
-
-$0
-    ]]
-  ),
-  ls.parser.parse_snippet(
-    "pyfooter",
-    [[
-# End of File: ${1:src/path/to}/${2:filename}.py
-    ]]
-  ),
+  s("pyfooter", {
+    t({ "# End of File: " }),
+    f(relpath, {}, {}),
+  }),
 })
-
 
 -- End of File: ~/.config/nvim/lua/profiles/dheebz/snippets/python.lua
